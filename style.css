@@ -1,184 +1,103 @@
-:root {
-  --bg: #f6efe6;            /* Sanftes Sandfarben-Hintergrund */
-  --accent: #d7c6af;        /* Hauptfarbe für Buttons */
-  --accent-hover: #cfc2b6;  /* Hoverfarbe für Buttons */
-  --text: #2a2a2a;          /* Dunkles Text */
-  --card: #ffffff;           /* Karte Hintergrund */
-  --radius: 25px;            /* Runde Ecken */
-  --maxw: 720px;             /* Max Breite */
-  --transition: 0.4s ease;
-  --ghost: #f0e9dd;          /* Für Ghost Buttons / Restart */
+/* PREMIUM — Maderotherapy Ibiza (sand / luxury) */
+:root{
+  --bg:#f6efe6;
+  --sand:#e8dcc9;
+  --accent:#b89877;        /* selected / primary accent (luxury sand) */
+  --accent-strong:#9a6f44;
+  --muted:#6f6f6f;
+  --text:#1f2b2b;
+  --card:#ffffff;
+  --radius:18px;
+  --maxw:800px;
+  --shadow:0 14px 32px rgba(16,22,26,0.08);
+  --transition:0.36s cubic-bezier(.2,.9,.2,1);
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:'Nunito',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+  background:linear-gradient(180deg,var(--bg),#fff);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  -webkit-tap-highlight-color: transparent; /* remove mobile blue */
 }
 
-body {
-  font-family: 'Nunito', sans-serif;
-  background: linear-gradient(180deg, var(--bg), #fff);
-  color: var(--text);
+/* layout */
+.container{max-width:var(--maxw);margin:0 auto;padding:1rem}
+.hero{padding:3.2rem 1rem;text-align:center}
+.hero-inner{max-width:760px;margin:0 auto}
+#main-title{font-size:2.6rem;font-weight:800;color:var(--accent-strong);margin-bottom:0.3rem}
+.subtitle{font-size:1rem;color:var(--muted);margin-bottom:1rem;max-width:780px;margin-left:auto;margin-right:auto}
+
+/* controls */
+.controls{display:flex;gap:0.85rem;align-items:center;justify-content:center;flex-wrap:wrap}
+.lang-select{
+  padding:0.6rem 0.9rem;border-radius:999px;border:1px solid rgba(0,0,0,0.06);
+  background:var(--card);font-weight:700;font-size:0.95rem;cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,0.04);
+}
+.lang-select:focus{outline:none;box-shadow:0 8px 20px rgba(154,111,68,0.12)}
+
+.btn{
+  padding:0.9rem 1.4rem;border-radius:999px;border:none;font-weight:800;cursor:pointer;transition:all var(--transition);
+  font-size:1rem;
+}
+.btn.primary{background:var(--accent);color:#fff;box-shadow:var(--shadow)}
+.btn.primary:hover{transform:translateY(-3px);background:var(--accent-strong)}
+.btn.ghost{background:transparent;border:1px solid rgba(0,0,0,0.06);color:var(--text);padding:0.7rem 1rem}
+
+/* card */
+.card{background:var(--card);border-radius:var(--radius);padding:1.6rem;margin:1rem 0;box-shadow:var(--shadow);transition:all var(--transition)}
+.animated{will-change:opacity,transform}
+
+/* quiz */
+.quiz-question{font-weight:800;margin-bottom:0.8rem;font-size:1.05rem}
+.choice-list{display:grid;gap:0.75rem}
+.choice button{
+  width:100%;display:block;text-align:left;padding:0.9rem;border-radius:14px;border:1px solid rgba(0,0,0,0.04);
+  background:linear-gradient(180deg,#fff,#fbf8f4);font-weight:700;cursor:pointer;transition:all var(--transition);
+  color:var(--text);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+}
+.choice button:hover{transform:translateY(-3px);background:linear-gradient(180deg,var(--accent),var(--accent-strong));color:#fff}
+.choice button:active{transform:translateY(0)}
+
+/* selected state (no blue) */
+.choice button.selected{
+  background:linear-gradient(180deg,var(--accent),var(--accent-strong));
+  color:#fff;
+  border-color:rgba(0,0,0,0.06);
+  box-shadow:0 10px 28px rgba(148,112,76,0.12);
+  transform:translateY(-2px);
 }
 
-.container {
-  max-width: var(--maxw);
-  margin: 0 auto;
-  padding: 1rem;
-}
+/* focus (custom, removes default blue) */
+.choice button:focus{outline:none;box-shadow:0 6px 18px rgba(154,111,68,0.12)}
 
-.hero {
-  padding: 3rem 1rem;
-  text-align: center;
-}
+/* progress */
+.progress{font-size:0.9rem;color:var(--muted);text-align:right;margin-top:0.6rem}
 
-.hero-inner h1 {
-  font-size: 2.2rem;
-  margin-bottom: 0.5rem;
-  font-weight: 800;
-}
+/* input/result */
+input,textarea{width:100%;padding:0.85rem;border-radius:12px;border:1px solid #e6dfd5;background:#fff;font-size:1rem;transition:all var(--transition)}
+.input-error{border-color:#d66;box-shadow:0 8px 20px rgba(214,102,102,0.08)}
+.error-msg{color:#b33;font-size:0.9rem;margin-top:0.5rem}
 
-.subtitle {
-  margin-bottom: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-}
+/* result card */
+#resultCard h2{font-size:1.3rem;margin-bottom:0.3rem}
+#resultCard .lead{color:var(--muted);margin-bottom:0.6rem}
+.result-plan{font-weight:700;margin-top:0.6rem}
 
-.lang-select {
-  padding: 0.6rem 1.2rem;
-  border-radius: 30px;
-  border: 1px solid #ddd;
-  margin-bottom: 1rem;
-  font-weight: 600;
-  background: #fff;
-  cursor: pointer;
-  transition: var(--transition);
-}
+/* animations */
+.fade-out{opacity:0;transform:translateY(14px)}
+.fade-in{opacity:1;transform:translateY(0);transition:all 0.42s cubic-bezier(.2,.9,.2,1)}
 
-.lang-select:hover {
-  border-color: var(--accent-hover);
-}
+/* footer */
+.footer{padding:1rem 0;text-align:center;color:var(--muted);font-size:0.9rem}
 
-.btn {
-  display: inline-block;
-  padding: 0.9rem 1.6rem;
-  border-radius: 30px;
-  border: none;
-  font-weight: 700;
-  cursor: pointer;
-  transition: var(--transition);
-  text-align: center;
-}
-
-.btn.primary {
-  background: var(--accent);
-  color: #fff;
-}
-
-.btn.primary:hover {
-  background: var(--accent-hover);
-}
-
-.btn.ghost {
-  background: var(--ghost);
-  color: var(--text);
-  border: 1px solid #ddd;
-}
-
-.btn.ghost:hover {
-  background: #e6ddd0;
-}
-
-.card {
-  background: var(--card);
-  border-radius: var(--radius);
-  padding: 2rem;
-  margin: 1rem 0;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  transform: translateY(0);
-  opacity: 1;
-  transition: var(--transition);
-}
-
-.quiz-question {
-  font-weight: 700;
-  margin-bottom: 1rem;
-  font-size: 1.15rem;
-}
-
-.choice-list {
-  display: grid;
-  gap: 0.8rem;
-}
-
-.choice button {
-  width: 100%;
-  border: none;
-  background: #fdfaf6;
-  padding: 0.9rem;
-  border-radius: 20px;
-  text-align: left;
-  font-weight: 500;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.choice button:hover {
-  background: var(--accent-hover);
-}
-
-input, textarea {
-  width: 100%;
-  padding: 0.8rem;
-  border-radius: 16px;
-  border: 1px solid #ddd;
-  margin-bottom: 0.8rem;
-  font-size: 1rem;
-}
-
-input::placeholder, textarea::placeholder {
-  color: #aaa;
-}
-
-.hidden {
-  display: none;
-}
-
-.animated {
-  transition: all 0.5s ease;
-}
-
-.fade-out {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.fade-in {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.footer {
-  padding: 1rem 0;
-  text-align: center;
-  color: #666;
-  font-size: 0.9rem;
-}
-
-.result-plan {
-  margin-top: 0.5rem;
-  font-weight: 600;
-}
-
-.progress {
-  margin-top: 0.6rem;
-  text-align: right;
-  color: #666;
-  font-size: 0.9rem;
-}
-
-#userName {
-  margin-top: 0.5rem;
-  margin-bottom: 0.8rem;
+/* responsive */
+@media(min-width:760px){
+  #main-title{font-size:3rem}
+  .card{padding:2rem}
+  .subtitle{font-size:1.05rem}
 }
