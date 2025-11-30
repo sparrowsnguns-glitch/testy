@@ -1,1 +1,46 @@
 
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Maderotherapy Ibiza — Quiz & Beratung</title>
+  <meta name="description" content="Maderotherapy Ibiza — quick quiz to find your personalized therapy plan." />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=1">
+  <script defer src="app.js?v=1"></script>
+</head>
+<body>
+  <main class="page container">
+    <header class="hero">
+      <div class="hero-inner">
+        <h1 id="main-title">Maderotherapy Ibiza</h1>
+        <p id="info-text" class="subtitle">Discover your personalized Maderotherapy plan for relaxation, contouring and lymphatic wellness during your Ibiza vacation.</p>
+
+        <div class="controls">
+          <select id="langSelect" class="lang-select" aria-label="Language select">
+            <!-- EN default first -->
+            <option value="en" selected>EN</option>
+            <option value="es">ES</option>
+            <option value="de">DE</option>
+          </select>
+
+          <button id="startBtn" class="btn primary" aria-controls="quizSection">Start Quiz</button>
+        </div>
+      </div>
+    </header>
+
+    <section id="quizSection" class="hidden" aria-live="polite">
+      <div id="quizCard" class="card animated" role="region"></div>
+    </section>
+
+    <section id="resultSection" class="hidden" aria-live="polite">
+      <div id="resultCard" class="card animated" role="region"></div>
+    </section>
+
+    <footer class="footer">
+      <small>&copy; <span id="year"></span> Maderotherapy Ibiza</small>
+    </footer>
+  </main>
+</body>
+</html>
